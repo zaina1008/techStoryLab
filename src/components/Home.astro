@@ -59,11 +59,15 @@ console.log("staffData",staffData);
 <CardStaff/>
 <CardStaff/>
 <CardStaff/> -->
+
+
+<div class="grid_saff">
 {
 staffData.map((staffdata) =>{
 return <CardStaff image={staffdata.image} title={staffdata.title} name={staffdata.name} email={staffdata.email} phoneNumber={staffdata.phonenumber} />
 })
 }
+</div>
 
 </article>
 
@@ -106,6 +110,22 @@ return <CardStaff image={staffdata.image} title={staffdata.title} name={staffdat
     margin: auto;
 }
 
+
+.grid_saff{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: fit-content; 
+    margin: auto;
+   gap: 30px;
+
+   padding-block: 30px;
+    padding-bottom: 80px;
+
+}
+
+
+
+
  @media (min-width: 600px) {
 
 
@@ -118,19 +138,30 @@ br{
 }
 
 .figure_1{
-    width: 50%;
+    width: 30%;
     margin-left: auto !important;
    
     
 }
 
+ .grid_saff{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+  padding-bottom: 80px;
+  
+   
+}
+
+
 .mestpopulæreF{
-    
     width: 60%;
     margin: 0 0 0 4rem !important;
 }
-
  }
+
+
+
+
 
 
 
