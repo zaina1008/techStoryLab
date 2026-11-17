@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+
+import figure_3 from"../images/figure_3.png";
+
+---
+
+<main>
+<div class="grid_1_1">
+
+    <div>
+    <p>Her kan du se vores udstyr. <br class="br_2"> Bemærk at booking af vores udstyr, kun <br> kan ske <span>fysisk og ikke online.</span></p>
+</div>
+
+ <Image class="figure_1"src={figure_3} alt="figure_" />
+</div>
+
+</main>
+
+<style>
+    .grid_1_1{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin-inline: 5%;
+        
+
+        padding-top: 30px;
+       
+    }
+.figure_1{
+    
+    width: 100%;
+    display: block;
+}
+
+span{
+    text-decoration: underline solid 2px black ;
+   text-underline-offset: 4px;
+}
+
+ @media (min-width: 600px) {
+
+    .figure_1{
+    width: 50%;
+    margin-left: auto !important;
+ 
+}
+
+.br_2{
+    display: none;
+}
+ }
+
+</style>

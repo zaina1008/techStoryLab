@@ -1,0 +1,195 @@
+---
+import { Image } from "astro:assets";
+import logoBlue from"../images/ek_logo_business-blue_rgb 3.svg";
+import searchImg from "../images/search.png";
+import Login from "./Login.astro"; 
+import Home from "./Home.astro"; 
+
+
+---
+
+<header class="header">
+    
+
+        <nav class="navBar">
+            
+             <a class="logo" href="/">
+                <Image src={logoBlue} alt="logo" />
+            </a>
+
+            <ul class="menu">
+                <li><a href="/#Faciliteter">Faciliteter</a></li>
+                <li><a href="udstyr">Udstyr</a></li>
+                <li><a href="/#staff">Kontakt</a></li>
+            
+            <li>
+            <div class="navIcons">
+                <Login />
+                <Image class="searchImg" src={searchImg} alt="Search" />
+            </div>
+            </li>
+            </ul>
+
+            <button class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </nav>
+        
+   
+</header>
+
+
+<style>
+    .header {
+        height: 138px;
+    }
+
+    .navBar {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 38px;
+        gap: 40px;
+    }
+
+  
+ 
+
+    .logo img {
+        width: 250px;
+        height: auto;
+    }
+
+    /* Navigation */
+    .navBar ul {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        list-style: none;
+        margin-left: auto;
+        padding: 0;
+    }
+
+    .navBar ul a {
+        text-decoration: none;
+        color: black;
+        font-size: 21px;
+        font-weight: 400;
+    }
+
+ 
+
+    /* Login and search icons */
+    .navIcons {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .searchImg {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    .burger {
+    display: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.burger .line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+ .navBar ul a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+ }
+
+
+
+
+    @media (max-width: 600px) {
+
+    .navBar {
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .logo img {
+        width: 170px;
+    }
+
+    .burger {
+        display: block;
+        z-index: 2;
+    
+    }
+
+    .navBar ul {
+        display: none;
+    }
+
+    .navBar.active .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 138px;
+        left: 0;
+        width: 100%;
+         background-color: var(--background_color);
+        padding: 20px;
+        gap: 20px;
+        z-index: 1;
+    }
+
+ 
+
+    .navIcons {
+        gap: 20px;
+    }
+
+    
+
+    }
+
+
+</style>
+
+
+<script>
+
+    const burger = document.querySelector(".burger");
+const nav = document.querySelector("nav");
+
+burger.addEventListener("click", burgerClick);
+
+function burgerClick() {
+  burger.classList.toggle("active");
+  nav.classList.toggle("active");
+}
+</script>
+
+

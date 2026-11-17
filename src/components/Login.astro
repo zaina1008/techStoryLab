@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import userImg from"../images/user.png";
+
+
+
+---
+
+
+<button class="userImg" popovertarget="user-popover"><Image src={userImg} alt="userlogo" /></button> 
+
+            <div class="user-popver" popover id="user-popover">
+                <legend>
+                    <h3>
+                        LOG IND
+                    </h3>
+                </legend>
+
+                 <div class="ep_popver">
+                        <label for="email">E-mail </label>
+                        <input placeholder="Indtast din e-mail" class="input" required type="email" id="email"
+                            name="e_mail">
+                    </div>
+                            <div class="ep_popver">
+                        <label for="password">KODE </label>
+                        <input placeholder="Indtast din adgangskode" class="input" required type="password" id="password"
+                            name="pass-word">
+                    </div>
+
+                   <button class="close_bnt" popovertarget="user-popover" popovertargetaction="hide"> Login</button>
+
+            </div>
+
+<style>
+    .userImg{
+        background: none;
+	color: inherit;
+	border: none;
+    }
+
+  
+.userImg {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.userImg img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.user-popver{
+    margin: auto !important;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: var(--ligth_blue);
+    color: white;
+    border: none;
+}
+
+.ep_popver{
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column
+}
+button{
+    display: block;
+    width: auto;
+    margin: auto;
+    padding-block: 7px;
+    padding-inline: 30px;
+    border-radius: 5px var;
+    
+}
+
+input{
+    width: fit-content;
+    padding-block: 10;
+    padding-inline: 20px;
+    border-radius: 5px;
+    background-color: var(--background_color);
+    color: black;
+    
+}
+
+legend{
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+[popover]::backdrop{
+     background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+
+
+    
+</style>

@@ -1,0 +1,159 @@
+---
+import { Image } from "astro:assets";
+import rundLogo from"../images/roundLogo.png"
+import clockImg from "../images/clock-img.webp";
+import locationImg from"../images/location-img.webp";
+import mail from"../images/mail-img.webp";
+import phoneImg from"../images/phone-img.webp";
+
+---
+<footer>
+<div class="grid_1-1-1">
+
+<div class="logo">
+ <a class="logo" href="/"><Image src={rundLogo} alt="logo" /></a>
+</div>
+
+
+<div>
+<div class="FOOTER-WRAP">
+    <Image class="mail-icon" src={mail} alt="mail" />
+    <p><a href="mailto:techandstorylab@ek.dk">techandstorylab@ek.dk</a></p>
+</div>
+
+<div class="FOOTER-WRAP">
+    <Image class="phone-icon" src={phoneImg} alt="phone" />
+    <a href="tel:+45 46 46 04 42">+45 46 46 04 42</a>
+</div>
+</div>
+
+<div>
+    <div class="FOOTER-WRAP">
+        <Image class="location-icon" src={locationImg} alt="location" />
+         <address> EK Gulbergsgade<br> Bygning A, A025
+    </address>
+    </div>
+
+    <div class="FOOTER-WRAP">
+        <Image class="clock-icon" src={clockImg} alt="clock" />
+        <p>Mandag til torsdag kl. 9.00-16.00<br> Fredag kl. 9.00-15.00</p>
+    </div>
+</div>
+
+</div>
+</footer>
+
+<style>
+
+/* Mobile */
+.grid_1-1-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+    gap: 35px;
+    padding: 30px 20px;
+}
+
+
+  .FOOTER-WRAP{
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: baseline;
+       align-items: center;
+        gap: 10PX;
+         margin-bottom: 30px;
+       
+    }
+
+/* Logo */
+.logo img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+     width: fit-content;
+     margin: auto;
+      margin-bottom: 30px;
+}
+
+
+.FOOTER-WRAP img {
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mail-icon {
+    width: 80px;
+    height: auto;
+}
+
+.phone-icon {
+    width: 45px;
+    height: auto;
+}
+
+.location-icon {
+    width: 80px;
+    height: auto;
+}
+
+.clock-icon {
+    width: 45px;
+    height: auto;
+}
+
+.FOOTER-WRAP a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (min-width: 600px) {
+
+
+ .grid_1-1-1 {
+        width: 100%;
+        grid-template-columns: 115px 1fr 1fr;
+        align-items: center;
+        gap: 35px;
+        padding: 30px 45px;
+        margin: 0;
+ }
+
+
+ .FOOTER-WRAP{
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: baseline;
+       align-items: center;
+        gap: 10PX;
+    }
+  }
+
+
+  
+ 
+
+  .FOOTER-WRAP{
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: baseline;
+       align-items: center;
+        gap: 10PX;
+         margin-bottom: 30px;
+       
+    }
+
+/* Logo */
+.logo img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+     width: fit-content;
+     margin: auto;
+      margin-bottom: 30px;
+}
+
+  
+</style>
+

@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import  Hero from "./Hero.astro";
+import figure_1 from"../images/figure_1.png";
+import mestpopulæreF from"../images/mestpopulæreF.png";
+import  CardStaff  from "./CardStaff.astro";
+
+import figure_2 from"../images/figure_2.png";
+
+
+
+const url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
+const staffTablename = "staff"; 
+
+
+const key ="sb_publishable_HNO2gEhjq--8baQl6X4KgA_X9N2TzPW";
+
+const options = {
+	headers: {
+        apiKey: key
+	}
+}
+
+const staffResponse = await fetch(url + staffTablename, options);
+const staffData = await staffResponse.json();
+
+
+console.log("staffData",staffData);
+---
+<main>
+<Hero/>
+<div class="grid_1_1">
+
+    <div id="Faciliteter">
+    <h2 class="f_H2">Faciliteter</h2>
+    <p>Her kan du få et overblik over vores <br class="f_br"> faciliteter. </p>
+</div>
+
+ <Image class="figure_1"src={figure_1} alt="figure_1" />
+</div>
+
+
+<article class="article_1">
+    <h2 class="f_H2">Mest populære faciliteter</h2>
+    <p>Her kan du få et overblik over vores <br> mest populære faciliteter og få noget inspiration.</p>
+    <Image class="mestpopulæreF"src={mestpopulæreF} alt="mestpopulæreF" />
+</article>
+
+
+
+
+
+<article class="article_2">
+
+<div id="staff" class="grid_1_1">
+
+    <div>
+    <h2 class="f_H2">Hvem er vi? </h2>
+    <p>Her kan du komme i kontakt med vores <br> passionerede team.</p>
+</div>
+
+ <Image class="figure_1"src={figure_2} alt="figure_2" />
+</div>
+
+<!-- <CardStaff image="" title="" name="" email="" phoneNumber="" />
+<CardStaff/>
+<CardStaff/>
+<CardStaff/> -->
+{
+staffData.map((staffdata) =>{
+return <CardStaff image={staffdata.image} title={staffdata.title} name={staffdata.name} email={staffdata.email} phoneNumber={staffdata.phonenumber} />
+})
+}
+
+</article>
+
+</main>
+
+<style>
+    .grid_1_1{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin-inline: 5%;
+        margin-top: 40px;
+       
+    }
+.figure_1{
+    
+    width: 100%;
+    display: block;
+}
+
+.grid_1_1 p{
+    margin-top: 5px;
+
+}
+
+
+
+.article_1 h2{
+    width: 90%;
+    margin: auto;
+}
+
+.article_1 p{
+    width: 90%;
+    margin: auto;
+    margin-block: 4px 15px;
+}
+
+.mestpopulæreF{
+    width: 90%;
+    margin: auto;
+}
+
+ @media (min-width: 600px) {
+
+
+.f_H2{
+font-size: 2rem;
+}
+
+br{
+    display: none;
+}
+
+.figure_1{
+    width: 50%;
+    margin-left: auto !important;
+   
+    
+}
+
+.mestpopulæreF{
+    
+    width: 60%;
+    margin: 0 0 0 4rem !important;
+}
+
+ }
+
+
+
+
+</style>

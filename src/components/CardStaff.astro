@@ -1,0 +1,23 @@
+---
+const {image, title, name, email, phoneNumber}= Astro.props
+---
+
+
+<article>
+    <img src={image}>
+    <h3>{title}</h3>
+    <p>{name}</p>
+    <p><a href="mailto:">{email}</a></p>
+     <a href="tel:">{phoneNumber}</a>
+
+</article>
+
+
+
+<style>
+   article{
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+   } 
+</style>

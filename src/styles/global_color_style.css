@@ -1,0 +1,32 @@
+:root {
+  --background_color: #fbf7e5;
+  --header_color: #ff8d9d;
+
+  /* buttons */
+
+  --main_bnt: #6d013e;
+  --main_hover_bnt: #ff8d9d;
+  --sub_bnt: #249a17;
+
+  --ligth_blue: #6284bc;
+}
+
+main {
+  background-color: var(--background_color);
+}
+header {
+  background-color: var(--header_color);
+}
+
+footer {
+  background-color: var(--header_color);
+}
+
+button {
+  background-color: var(--main_bnt);
+  color: white;
+}
+
+button:hover {
+  background-color: var(--main_hover_bnt);
+}
