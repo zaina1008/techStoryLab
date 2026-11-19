@@ -1,26 +1,9 @@
 ---
 import  Layout  from "../layouts/Layout.astro";
 
-
-const url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
-const staffTablename = "staff"; 
-
-
-const key ="sb_publishable_HNO2gEhjq--8baQl6X4KgA_X9N2TzPW";
-
-const options = {
-	headers: {
-        apiKey: key
-	}
-}
-
-const staffResponse = await fetch(url + staffTablename, options);
-const staffData = await staffResponse.json();
-
-
-console.log("staffData",staffData);
-
 import Home from"../components/Home.astro";
+
+
 ---
 
 

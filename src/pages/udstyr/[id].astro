@@ -1,0 +1,149 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import yellow_logo from"../../images/yellow-logo.png";
+
+export async function getStaticPaths() {
+
+const url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
+const udstyrTablename = "udstyr"; 
+
+
+const key ="sb_publishable_HNO2gEhjq--8baQl6X4KgA_X9N2TzPW"
+
+const options = {
+	headers: {
+        apiKey: key
+	}
+}
+
+const udstyrResponse = await fetch(url + udstyrTablename, options);
+const udstyrData = await udstyrResponse.json();
+
+console.log("udstyrData",udstyrData);
+
+
+  return udstyrData.map((udstyr) => ({
+        params: { id: String(udstyr.id) },
+        props: { udstyr }
+    }));
+
+}
+
+const { udstyr } = Astro.props;
+---
+
+<Layout>
+  <main>
+    
+<div class="facility_details"  style={`background-image: url(${yellow_logo.src})`}>
+
+    <div>
+ <img src={udstyr.image}/>
+    </div>
+    <div class="udstyr_info">
+        <h2>{udstyr.title}</h2>
+        <h3>INFORMATION:</h3>
+        <p>{udstyr.description}</p>
+        <div class="availability">
+    <p class={udstyr.available ? "available" : "unavailable"}>
+        {udstyr.available ? "Tilgængelig" : "Ikke tilgængelig"}
+    </p>
+</div>
+    </div>
+
+</div>
+
+  </main>
+</Layout>
+
+
+
+<style>
+   
+
+     .facility_details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+  
+    width: fit-content;
+  
+    margin: auto;
+    padding-block: 50px 50px;
+}
+
+/* Image */
+.facility_details img {
+    width: 85%;
+    margin: auto;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+.udstyr_info{
+    width: 85%;
+    margin: auto;
+}
+
+/* Title */
+.facility_details h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+/* Information heading */
+.facility_details h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Description */
+.facility_details p {
+    /* line-height: 1.6;
+    font-size: 1rem; */
+}
+
+/* Availability */
+.availability {
+    margin-top: 25px;
+}
+
+.availability p {
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.available {
+    color: green;
+    border: 2px solid green;
+}
+
+.unavailable {
+    color: red;
+    border: 2px solid red;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .facility_details {
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 25px;
+    }
+
+    .facility_details img {
+        height: 350px;
+    }
+
+    .facility_details h2 {
+        font-size: 2rem;
+    }
+}
+</style>

@@ -4,8 +4,12 @@ import  Hero from "./Hero.astro";
 import figure_1 from"../images/figure_1.png";
 import mestpopulaereF from"../images/mestPopulaereF.png";
 import  CardStaff  from "./CardStaff.astro";
+import  CardFacili  from "./CardFacili.astro";
 
 import figure_2 from"../images/figure_2.png";
+
+
+// staff
 
 const url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
 const staffTablename = "staff"; 
@@ -23,6 +27,33 @@ const staffResponse = await fetch(url + staffTablename, options);
 const staffData = await staffResponse.json();
 
 console.log("staffData",staffData);
+
+
+
+// facilitetere
+
+const f_url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
+const facilitieTablename = "faciliteter"; 
+
+
+const fkey ="sb_publishable_HNO2gEhjq--8baQl6X4KgA_X9N2TzPW";
+
+const f_options = {
+	headers: {
+        apiKey: fkey
+	}
+}
+
+const facilitieResponse = await fetch(f_url + facilitieTablename, f_options);
+const facilitieData = await facilitieResponse.json();
+
+console.log("facilitieData:", facilitieData);
+// console.log("Is it an array?", Array.isArray(facilitieData));
+// console.log("facilitieData",facilitieData);
+
+
+import yellow_logo from"../images/yellow-logo.png";
+
 ---
 <main>
 <Hero/>
@@ -34,6 +65,16 @@ console.log("staffData",staffData);
 </div>
 
  <Image class="figure_1"src={figure_1} alt="figure_1" />
+</div>
+
+
+<div class="grid_faciliteter">
+{
+facilitieData.map((facilitidata) =>{
+return <CardFacili  id={facilitidata.id} title={facilitidata.title} littleDescription={facilitidata.littledescription} image={facilitidata.image} />
+})
+}
+
 </div>
 
 
@@ -55,10 +96,7 @@ console.log("staffData",staffData);
  <Image class="figure_1"src={figure_2} alt="figure_2" />
 </div>
 
-<!-- <CardStaff image="" title="" name="" email="" phoneNumber="" />
-<CardStaff/>
-<CardStaff/>
-<CardStaff/> -->
+
 
 
 <div class="grid_saff">
@@ -111,6 +149,20 @@ return <CardStaff image={staffdata.image} title={staffdata.title} name={staffdat
 }
 
 
+
+    /* grid facility */
+.grid_faciliteter {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: auto;
+    gap: 30px;
+    padding-block: 30px 80px;
+}
+
+
+
+/* Staff Grid */
 .grid_saff{
     display: grid;
     grid-template-columns: 1fr;
@@ -120,6 +172,13 @@ return <CardStaff image={staffdata.image} title={staffdata.title} name={staffdat
 
    padding-block: 30px;
     padding-bottom: 80px;
+
+    /* grid facility */
+
+
+
+
+
 
 }
 
@@ -150,6 +209,26 @@ br{
   padding-bottom: 80px;
   
    
+}
+
+/* .grid_faciliteter{
+      display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 80px;
+  width: 70%;
+  height: 500px;
+  gap: 30px;
+  margin: auto;
+
+} */
+
+.grid_faciliteter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    margin: auto;
+    gap: 30px;
+    padding-block: 30px 80px;
 }
 
 

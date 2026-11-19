@@ -1,7 +1,27 @@
 ---
 import { Image } from "astro:assets";
-
 import figure_3 from"../images/figure_3.png";
+import CardUdstyr from "./CardUdstyr.astro";
+
+
+
+
+const url = "https://ybfuhuqlwktfyvtxwsei.supabase.co/rest/v1/";
+const udstyrTablename = "udstyr"; 
+
+
+const key ="sb_publishable_HNO2gEhjq--8baQl6X4KgA_X9N2TzPW"
+
+const options = {
+	headers: {
+        apiKey: key
+	}
+}
+
+const udstyrResponse = await fetch(url + udstyrTablename, options);
+const udstyrData = await udstyrResponse.json();
+
+console.log("udstyrData",udstyrData);
 
 ---
 
@@ -15,7 +35,31 @@ import figure_3 from"../images/figure_3.png";
  <Image class="figure_1"src={figure_3} alt="figure_" />
 </div>
 
+
+
+<div class="grid_faciliteter">
+{
+udstyrData.map((udstyrdata) =>{
+return <CardUdstyr  id={udstyrdata.id} title={udstyrdata.title} image={udstyrdata.image} />
+})
+}
+</div>
+
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
     .grid_1_1{
@@ -38,6 +82,21 @@ span{
    text-underline-offset: 4px;
 }
 
+
+
+ /* grid facility */
+.grid_faciliteter {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: auto;
+    gap: 30px;
+    padding-block: 30px 80px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
  @media (min-width: 600px) {
 
     .figure_1{
@@ -49,6 +108,18 @@ span{
 .br_2{
     display: none;
 }
+
+
+.grid_faciliteter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    margin: auto;
+    gap: 30px;
+    padding-block: 30px 80px;
+}
  }
+
+
 
 </style>

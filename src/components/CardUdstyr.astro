@@ -1,0 +1,48 @@
+---
+const { id, title, description, image, available, information } = Astro.props;
+import bluecard from"../images/bluecard.png";
+---
+
+  <article class="facilities_card" style={`background-image: url(${bluecard.src})`}
+>
+    <a href={`/udstyr/${id}`}>
+        <h2>{title}</h2>
+        <img src={image} alt={title}>
+    </a>
+   
+</article>
+
+
+ <style>
+.facilities_card {
+    background-color: var(--ligth_blue);
+    padding-inline: 35px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+    /* height: 500px; */
+    padding-bottom: 90px;
+    
+}
+
+.facilities_card a {
+    text-decoration: none;
+    color: white;
+        height: 90%;
+}
+
+.facilities_card h2 {
+    margin: 0;
+    text-align: left;
+    padding: 55px;
+}
+
+
+.facilities_card img {
+    height: 300px;
+    border-radius: 15px;
+}
+
+ </style>
